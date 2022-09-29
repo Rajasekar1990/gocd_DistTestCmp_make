@@ -175,7 +175,7 @@ pipelines:
                 run_if: passed
     - CleanUpTestEnvironment:
         fetch_materials: true
-        keep_artifacts: true
+        keep_artifacts: false
         clean_workspace: false
         approval:
           type: success
