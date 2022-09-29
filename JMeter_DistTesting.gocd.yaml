@@ -179,7 +179,7 @@ pipelines:
         clean_workspace: false
         approval:
           type: success
-          allow_only_on_success: true
+          allow_only_on_success: false
         jobs:
            KillandRemoveContainers:
             timeout: 0
