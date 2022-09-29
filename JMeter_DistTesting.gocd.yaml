@@ -41,100 +41,100 @@ pipelines:
                 - docker login jmeteracrrepo.azurecr.io -u ${ACRusername} -p ${ACRpwd}
                 command: /bin/bash
                 run_if: passed
-    - ACR_Build_Img_And_Push:
-        fetch_materials: true
-        keep_artifacts: false
-        clean_workspace: false
-        approval:
-          type: success
-          allow_only_on_success: true
-        jobs:
-          JMeter_Master_Img:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - Current working dir
-                command: echo
-                run_if: passed
-            - exec:
-                command: pwd
-                run_if: passed
-            - exec:
-                arguments:
-                - Listing files in current working dir
-                command: echo
-                run_if: passed
-            - exec:
-                arguments:
-                - -lrt
-                command: ls
-                run_if: passed
-            - exec:
-                arguments:
-                - Build Jmeter Master Image
-                command: echo
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd .
-                command: /bin/bash
-                run_if: passed
-            - exec:
-                arguments:
-                - Push JMeter Master Image to ACR
-                command: echo
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd
-                command: /bin/bash
-                run_if: passed
-          JMeter_Slave_Img:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - Current working dir
-                command: echo
-                run_if: passed
-            - exec:
-                command: pwd
-                run_if: passed
-            - exec:
-                arguments:
-                - Listing files in current working dir
-                command: echo
-                run_if: passed
-            - exec:
-                arguments:
-                - -lrt
-                command: ls
-                run_if: passed
-            - exec:
-                arguments:
-                - Build Jmeter Slave Image
-                command: echo
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - docker build -f jmeterslaveimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd .
-                command: /bin/bash
-                run_if: passed
-            - exec:
-                arguments:
-                - Push JMeter Slave Image to ACR
-                command: echo
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd
-                command: /bin/bash
-                run_if: passed
+    # - ACR_Build_Img_And_Push:
+    #     fetch_materials: true
+    #     keep_artifacts: false
+    #     clean_workspace: false
+    #     approval:
+    #       type: success
+    #       allow_only_on_success: true
+    #     jobs:
+    #       JMeter_Master_Img:
+    #         timeout: 0
+    #         tasks:
+    #         - exec:
+    #             arguments:
+    #             - Current working dir
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             command: pwd
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - Listing files in current working dir
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - -lrt
+    #             command: ls
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - Build Jmeter Master Image
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - -c
+    #             - docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd .
+    #             command: /bin/bash
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - Push JMeter Master Image to ACR
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - -c
+    #             - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd
+    #             command: /bin/bash
+    #             run_if: passed
+    #       JMeter_Slave_Img:
+    #         timeout: 0
+    #         tasks:
+    #         - exec:
+    #             arguments:
+    #             - Current working dir
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             command: pwd
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - Listing files in current working dir
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - -lrt
+    #             command: ls
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - Build Jmeter Slave Image
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - -c
+    #             - docker build -f jmeterslaveimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd .
+    #             command: /bin/bash
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - Push JMeter Slave Image to ACR
+    #             command: echo
+    #             run_if: passed
+    #         - exec:
+    #             arguments:
+    #             - -c
+    #             - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd
+    #             command: /bin/bash
+    #             run_if: passed
     - Execute_Performance_Test:
         fetch_materials: true
         keep_artifacts: false
