@@ -4,10 +4,10 @@ echo "listing files in working dir"
 ls -lrt
 
 echo "listing files in jm dir"
-ls -lrt $pwd/jm
+cd jm | ls -lrt 
 
-echo "pwd"
-currentworkdir=$pwd
+echo "CurrentWorkingDir"
+currentworkdir=$(pwd)
 echo "current working dir is:${currentworkdir}"
 
 echo "##Checking for docker-compose containers status##"
