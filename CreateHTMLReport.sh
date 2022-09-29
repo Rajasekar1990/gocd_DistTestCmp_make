@@ -6,6 +6,10 @@ docker exec -i jm_master /bin/bash -c "cd /home/jmeter/ && jmeter -g /home/jmete
 echo "##Copying JTL and HTML Report to GOCD working DIR##"
 # cd jm
 echo "Current Working DIR is:$PWD"
+echo "Current Working DIR file list:$(ls -lrt)"
+mkdir Report-${GO_PIPELINE_COUNTER}
+echo "Current Working DIR file list with Report dir created:$(ls -lrt)"
+
 echo "jm_master Current Working DIR is:$(docker exec -i jm_master /bin/bash -c "pwd && ls -lrt")"
 docker cp jm_master:/home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl ./Report-${GO_PIPELINE_COUNTER}/jmeter-${GO_PIPELINE_COUNTER}.jtl
 docker cp jm_master:/home/jmeter/htmlreport-${GO_PIPELINE_COUNTER}/ ./Report-${GO_PIPELINE_COUNTER}/htmlreport-${GO_PIPELINE_COUNTER}/
