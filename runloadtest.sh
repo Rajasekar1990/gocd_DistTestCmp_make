@@ -77,8 +77,8 @@ echo "##Executing Loadtest##"
 # cd jm
 # echo "Current Working DIR is: $PWD"
 # ls -lrt
-docker exec -it jm_master /bin/bash "pwd"
-docker exec -it jm_master /bin/bash "ls -lrt"
+docker exec -it jm_master -c /bin/bash "pwd"
+docker exec -it jm_master -c /bin/bash "ls -lrt"
 #docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "cd /home/jmeter/ && jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -Dserver.rmi.ssl.disable=true -R${finalipset} -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
 
 # echo "##Docker container logs##"
