@@ -93,6 +93,7 @@ RUN ${JMETER_HOME}/bin/PluginsManagerCMD.sh status
 RUN ${JMETER_HOME}/bin/PluginsManagerCMD.sh install jmeter-prometheus=0.6.0
 
 ENV PATH $PATH:$JMETER_BIN
-WORKDIR $JMETER_HOME
+#WORKDIR $JMETER_HOME
+WORKDIR /home/jmeter
 EXPOSE 9270 60000
 CMD ["jmeter"]

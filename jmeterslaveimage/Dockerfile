@@ -18,7 +18,8 @@ ENV PATH ${JMETER_HOME}/bin:${PATH}
 EXPOSE 1099 50000
 
 ENV PATH $PATH:$JMETER_BIN
-WORKDIR $JMETER_HOME
+#WORKDIR $JMETER_HOME
+WORKDIR /home/jmeter
 
 # Application to run on starting the container
 ENTRYPOINT ${JMETER_HOME}/bin/jmeter-server \

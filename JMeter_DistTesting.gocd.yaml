@@ -156,42 +156,42 @@ pipelines:
                 - sh runloadtest.sh
                 command: /bin/bash
                 run_if: passed
-    # - ReportCreation:
-    #     fetch_materials: true
-    #     keep_artifacts: true
-    #     clean_workspace: false
-    #     approval:
-    #       type: success
-    #       allow_only_on_success: true
-    #     artifacts:
-    #         - build:
-    #             source: jmeter-*
-    #             destination: ''
-    #     jobs:
-    #       CreateHTMLReport:
-    #         timeout: 0
-    #         tasks:
-    #         - exec:
-    #             arguments:
-    #             - -c
-    #             - sh createHTMLReport.sh
-    #             command: /bin/bash
-    #             run_if: passed
-    # - CleanUpDockerCompose:
-    #     fetch_materials: true
-    #     keep_artifacts: false
-    #     clean_workspace: false
-    #     approval:
-    #       type: success
-    #       allow_only_on_success: false
-    #     jobs:
-    #        KillandRemoveContainers:
-    #         timeout: 0
-    #         tasks:
-    #         - exec:
-    #             arguments:
-    #             - -c
-    #             - sh killremovedockercmp.sh
-    #             command: /bin/bash
-    #             run_if: passed  
+    - ReportCreation:
+        fetch_materials: true
+        keep_artifacts: true
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: true
+        artifacts:
+            - build:
+                source: jmeter-*
+                destination: ''
+        jobs:
+          CreateHTMLReport:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - -c
+                - sh createHTMLReport.sh
+                command: /bin/bash
+                run_if: passed
+    - CleanUpDockerCompose:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+           KillandRemoveContainers:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - -c
+                - sh killremovedockercmp.sh
+                command: /bin/bash
+                run_if: passed  
             
