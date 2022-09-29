@@ -61,8 +61,8 @@ finalipset=${ip_set%?}
 echo "finalipset is=$finalipset"
 
 echo "##Copying test scripts and csv files to /home/jmeter/ location of Master and all slave containers##"
-docker compose -f ${currentworkdir}/jm/docker-compose.yml cp /test/ master:/home/jmeter/test/
-docker compose -f ${currentworkdir}/jm/docker-compose.yml cp /test/ slave:/home/jmeter/test/
+docker compose -f ${currentworkdir}/jm/docker-compose.yml cp ${currentworkdir}/test/ master:/home/jmeter/test/
+docker compose -f ${currentworkdir}/jm/docker-compose.yml cp ${currentworkdir}/test/ slave:/home/jmeter/test/
 
 echo "##Listing files in master container##"
 docker exec -i jm_master /bin/bash -c 'cd /home/jmeter/test/ && ls -lart'
