@@ -142,13 +142,13 @@ pipelines:
         approval:
           type: success
           allow_only_on_success: true
-        # artifacts:
-        #     - build:
-        #         source: Report-*
-        #         destination: ''
         jobs:
           Run_Load_Test:
             timeout: 0
+            # artifacts:
+            # - build:
+            #     source: Report-*
+            #     destination: ''
             tasks:
             - exec:
                 arguments:
@@ -163,13 +163,13 @@ pipelines:
         approval:
           type: success
           allow_only_on_success: false
-        artifacts:
-            - build:
-                source: Report*
-                destination: ''
         jobs:
           CreateHTMLReport:
             timeout: 0
+            artifacts:
+            - build:
+                source: Report*
+                destination: ''
             tasks:
             - exec:
                 arguments:
