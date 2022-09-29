@@ -4,11 +4,11 @@ echo "listing files in working dir"
 ls -lrt
 
 echo "listing files in jm dir"
-cd jm && ls -lrt
+ls -lrt $pwd/jm
 
 echo "pwd"
-pwd
 currentworkdir=$pwd
+echo "current working dir is:${currentworkdir}"
 
 echo "##Checking for docker-compose containers status##"
 status_dockercmp=$(docker compose -f ${currentworkdir}/jm/docker-compose.yml ps -q --filter status=running | wc -l)
