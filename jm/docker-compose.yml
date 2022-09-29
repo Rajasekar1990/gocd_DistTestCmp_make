@@ -1,4 +1,4 @@
-version: '2.2'
+version: '3.3'
 
 services:
 
@@ -10,7 +10,7 @@ services:
     #   - ./test/:/jmeter/apache-jmeter-5.4.3/test/
     #command : "COPY $PWD/Pipeline_SampleScript.jmx /jmeter/apache-jmeter-5.4.3/Pipeline_SampleScript.jmx"
     command : "/bin/bash"
-    #tty: true
+    tty: true
     networks:
       - dist
   
@@ -21,7 +21,7 @@ services:
     # volumes:
     #   - ./test/:/jmeter/apache-jmeter-5.4.3/test
     #command : "COPY $PWD/Pipeline_SampleScript.jmx /jmeter/apache-jmeter-5.4.3/Pipeline_SampleScript.jmx"
-    #tty: true
+    tty: true
     networks:
       - dist
   
