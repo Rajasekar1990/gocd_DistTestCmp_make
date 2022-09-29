@@ -22,7 +22,7 @@ echo "##Listing Containers##"
 docker-compose -f jm/docker-compose.yml ps
 
 echo "##Scale Slave machines to required numbers of replicas | default is set as 2##"
-docker-compose -f jm/docker-compose.yml scale slave=$(NumOfSlaves)
+docker-compose -f jm/docker-compose.yml scale slave=${NumOfSlaves}
 
 echo "##Listing Containers to get total number of slaves running##"
 docker compose -f jm/docker-compose.yml ps --filter status=running slave
