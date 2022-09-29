@@ -88,4 +88,4 @@ docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "cd /hom
 echo "##Viewing master machine jmeter.log##"
 docker exec -i jm_master /bin/bash -c "pwd"
 docker exec -i jm_master /bin/bash -c "ls -lrt"
-docker exec -i jm_master /bin/bash -c 'cat jmeter.log'
+docker exec -i jm_master /bin/bash -c 'cd /home/jmeter/ && cat jmeter.log'
