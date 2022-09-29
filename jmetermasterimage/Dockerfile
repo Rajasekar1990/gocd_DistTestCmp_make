@@ -9,7 +9,7 @@ USER jmeter
 # sudo apt-get update
 # sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-ENV JMETER_VERSION 5.3
+ENV JMETER_VERSION 5.4.3
 ENV JMETER_HOME /home/jmeter/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN $JMETER_HOME/bin
 ENV JMETER_PLUGINS ${JMETER_HOME}/lib/ext
