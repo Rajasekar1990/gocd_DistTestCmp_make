@@ -7,6 +7,7 @@ pipelines:
     display_order: -1
     environment_variables:
       ACRusername: jmeteracrrepo
+      NumOfSlaves: 2
     secure_variables:
       ACRpwd: AES:93Shl6wGNWELgvubz8A56g==:nJYINiT7QDipJ5IFwPs/wIOzfOwnxSzgq8XGjeJSeq7E7guzR0qCCJJ0Pq+hAUxi
     materials:
@@ -158,6 +159,10 @@ pipelines:
         approval:
           type: success
           allow_only_on_success: true
+        artifacts:
+            - build:
+                source: jmeter-*
+                destination: ''
         jobs:
           CreateHTMLReport:
             timeout: 0
