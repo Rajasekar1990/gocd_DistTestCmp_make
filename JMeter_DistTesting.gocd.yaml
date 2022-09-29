@@ -145,7 +145,7 @@ pipelines:
         artifacts:
             - build:
                 source: Report*
-                destination: ''
+                destination: Report*
         jobs:
           Run_Load_Test:
             timeout: 0
@@ -166,7 +166,7 @@ pipelines:
         artifacts:
             - build:
                 source: Report*
-                destination: ''
+                destination: Report*
         jobs:
           CreateHTMLReport:
             timeout: 0
