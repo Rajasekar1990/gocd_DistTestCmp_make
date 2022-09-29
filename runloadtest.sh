@@ -85,7 +85,8 @@ docker exec -i jm_master /bin/bash -c "ls -lrt"
 #docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "cd /home/jmeter/ && jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
 
 #Run the below command to inject load using Slave machines
-docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "cd /home/jmeter/ && jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -R${finalipset} -Dserver.rmi.ssl.disable=true -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
+echo "jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -Dserver.rmi.ssl.disable=true -R${finalipset} -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
+docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "cd /home/jmeter/apache-jmeter-5.3/bin && jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -Dserver.rmi.ssl.disable=true -R${finalipset} -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
 
 # echo "##Docker container logs##"
 # docker logs jm_master
@@ -93,4 +94,6 @@ docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "cd /hom
 echo "##Viewing master machine jmeter.log##"
 docker exec -i jm_master /bin/bash -c "pwd"
 docker exec -i jm_master /bin/bash -c "ls -lrt"
+docker exec -i jm_master /bin/bash -c "cd"
+docker exec -i jm_master /bin/bash -c "pwd"
 docker exec -i jm_master /bin/bash -c "cd /home/jmeter/ && cat jmeter.log"
