@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   master:
-    image: jmeteracrrepo.azurecr.io/jmeter:jmeter5.4.3Azmastergocd
+    image: jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd
     container_name: jm_master
     hostname: master
     # volumes:
@@ -15,7 +15,7 @@ services:
       - dist
   
   slave:
-    image: jmeteracrrepo.azurecr.io/jmeter:jmeter5.4.3Azslavegocd
+    image: jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd
     depends_on:
       - master
     # volumes:

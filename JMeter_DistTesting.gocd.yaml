@@ -78,7 +78,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.4.3Azmastergocd .
+                - docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd .
                 command: /bin/bash
                 run_if: passed
             - exec:
@@ -89,7 +89,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.4.3Azmastergocd
+                - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd
                 command: /bin/bash
                 run_if: passed
           JMeter_Slave_Img:
@@ -121,7 +121,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker build -f jmeterslaveimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.4.3Azslavegocd .
+                - docker build -f jmeterslaveimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd .
                 command: /bin/bash
                 run_if: passed
             - exec:
@@ -132,7 +132,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.4.3Azslavegocd
+                - docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd
                 command: /bin/bash
                 run_if: passed
     - Execute_Performance_Test:

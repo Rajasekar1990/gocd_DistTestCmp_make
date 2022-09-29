@@ -7,7 +7,7 @@ MAINTAINER Rajasekar S <rajasekars792@gmail.com>
 #ENV JMETER_VERSION 5.4.3
 #ENV JMETER_HOME /jmeter/apache-jmeter-$JMETER_VERSION/
 
-ENV JMETER_VERSION 5.4.3
+ENV JMETER_VERSION 5.3
 ENV JMETER_HOME /home/jmeter/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN ${JMETER_HOME}/bin
 ENV JMETER_PLUGINS ${JMETER_HOME}/lib/ext
@@ -18,8 +18,8 @@ ENV PATH ${JMETER_HOME}/bin:${PATH}
 EXPOSE 1099 50000
 
 ENV PATH $PATH:$JMETER_BIN
-WORKDIR $JMETER_HOME
-#WORKDIR /home/jmeter
+#WORKDIR $JMETER_HOME
+WORKDIR /home/jmeter
 
 # Application to run on starting the container
 ENTRYPOINT ${JMETER_HOME}/bin/jmeter-server \
