@@ -4,7 +4,7 @@ echo "listing files in working dir"
 ls -lrt
 
 echo "listing files in jm dir"
-cd jm | ls -lrt 
+ls -lrt jm
 
 echo "CurrentWorkingDir"
 currentworkdir=$(pwd)
@@ -75,10 +75,9 @@ done
 
 echo "##Executing Loadtest##"
 # cd jm
-# echo "Current Working DIR is: $PWD"
+echo "Current Working DIR is: $PWD"
+ls -lrt
 #docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "cd /home/jmeter/ && jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -Dserver.rmi.ssl.disable=true -R${finalipset} -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
-echo"jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -Dserver.rmi.ssl.disable=true -R${finalipset} -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
-#docker exec -i -e JVM_ARGS="-Xms2048m -Xmx4096m" jm_master /bin/bash -c "jmeter -n -t /home/jmeter/test/Pipeline_SampleScript.jmx -Dserver.rmi.ssl.disable=true -R${finalipset} -l /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl"
 
 # echo "##Docker container logs##"
 # docker logs jm_master
