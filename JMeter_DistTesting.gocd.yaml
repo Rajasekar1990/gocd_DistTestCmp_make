@@ -144,7 +144,7 @@ pipelines:
           allow_only_on_success: true
         artifacts:
             - build:
-                source: jmeter-*
+                source: jmeter*
                 destination: ''
         jobs:
           Run_Load_Test:
@@ -165,7 +165,7 @@ pipelines:
           allow_only_on_success: false
         artifacts:
             - build:
-                source: jmeter-*
+                source: jmeter*
                 destination: ''
         jobs:
           CreateHTMLReport:

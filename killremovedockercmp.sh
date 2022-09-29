@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 echo "##Kill and Remove all Docker Compose Containers##"
+echo "Current Working DIR is:$PWD"
 docker-compose -f ${currentworkdir}/jm/docker-compose.yml down
 
 echo "##Dockercompose containers status"
