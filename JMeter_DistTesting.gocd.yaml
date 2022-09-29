@@ -145,10 +145,10 @@ pipelines:
         jobs:
           Run_Load_Test:
             timeout: 0
-            artifacts:
-            - build:
-                source: Report*
-                destination: ''
+            # artifacts:
+            # - build:
+            #     source: Report*
+            #     destination: ''
             tasks:
             - exec:
                 arguments:
