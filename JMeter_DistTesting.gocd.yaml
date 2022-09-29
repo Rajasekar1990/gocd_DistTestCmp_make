@@ -177,9 +177,9 @@ pipelines:
                 - sh createHTMLReport.sh
                 command: /bin/bash
                 run_if: passed
-    - CleanUpDockerCompose:
+    - CleanUpTestEnvironment:
         fetch_materials: true
-        keep_artifacts: false
+        keep_artifacts: true
         clean_workspace: false
         approval:
           type: success
