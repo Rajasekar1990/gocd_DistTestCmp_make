@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  JMeter_DistTesting:
+  JMeter_DistTesting1:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
@@ -140,7 +140,7 @@ pipelines:
         clean_workspace: false
         approval:
           type: success
-          allow_only_on_success: false
+          allow_only_on_success: true
         jobs:
           Run_Load_Test:
             timeout: 0
@@ -148,50 +148,41 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - echo "Listing files in current dir"
+                - sh runloadtest.sh
                 command: /bin/bash
                 run_if: passed
+    - ReportCreation:
+        fetch_materials: true
+        keep_artifacts: true
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: true
+        jobs:
+          CreateHTMLReport:
+            timeout: 0
+            tasks:
             - exec:
                 arguments:
                 - -c
-                - ls -lrt
+                - sh createHTMLReport.sh
                 command: /bin/bash
                 run_if: passed
+    - CleanUpDockerCompose:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: true
+        jobs:
+           KillandRemoveContainers:
+            timeout: 0
+            tasks:
             - exec:
                 arguments:
                 - -c
-                - echo "Listing files in jm dir"
+                - sh killremovedockercmp.sh
                 command: /bin/bash
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - cd jm && ls -lrt
-                command: /bin/bash
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - echo "Checking for docker-compose containers status"
-                command: /bin/bash
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - status_dockercmp=$(docker compose -f jm/docker-compose.yml ps -q --filter status=running | wc -l) \
-                - '&& echo "docker compose status: $status_dockercmp" \'
-                - '&& if [$status_dockercmp > 0] then docker compose -f jm/docker-compose.yml down fi'
-                command: /bin/bash
-                run_if: passed
-            # - exec:
-            #     arguments:
-            #     - -c
-            #     - echo "Creating Master and Slave Container from ACR Img"
-            #     command: /bin/bash
-            #     run_if: passed
-            # - exec:
-            #     arguments:
-            #     - -c
-            #     - docker compose -f jm/docker-compose.yml up -d
-            #     command: /bin/bash
-            #     run_if: passed
+                run_if: passed  
+            
