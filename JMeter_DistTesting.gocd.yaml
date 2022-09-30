@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  JMeter_DistTesting1:
+  JMeter_DistTestingSH:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished

@@ -20,12 +20,3 @@ then
 else 
     echo "Jmeter Master Image Build Failed"
 fi
-
-
-
-
-
-
-
-
-
