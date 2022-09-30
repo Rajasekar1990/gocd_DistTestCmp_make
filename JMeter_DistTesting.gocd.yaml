@@ -56,6 +56,7 @@ pipelines:
                 arguments:
                 - -c
                 - sh ACR_Build_Push_Master_Img.sh
+                command: /bin/bash
                 run_if: passed
     - ACR_JmSlave_Build_Push_Image:
         fetch_materials: true
@@ -72,6 +73,7 @@ pipelines:
                 arguments:
                 - -c
                 - sh ACR_Build_Push_Slave_Img.sh
+                command: /bin/bash
                 run_if: passed
     - Execute_Performance_Test:
         fetch_materials: true
