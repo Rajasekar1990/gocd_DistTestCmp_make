@@ -6,16 +6,16 @@ ls -lrt
 
 echo "Build Jmeter Slave Image"
 docker build -f jmeterslaveimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd .
-buildstatus=$?
-echo "buildstatus=$?"
+Slavebuildstatus=$?
+echo "Slavebuildstatus:$Slavebuildstatus"
 
-if [ $(buildstatus=$?) -eq 0 ] 
+if [ $Slavebuildstatus -eq 0 ] 
 then
     echo "Push JMeter Slave Image to ACR"
     docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd
-    pushstatus=$?
-    echo "pushstatus=$?"
-    if [ $pushstatus -eq 0 ] 
+    SlavePushstatus=$?
+    echo "SlavePushstatus:$SlavePushstatus"
+    if [ $SlavePushstatus -eq 0 ] 
     then
         echo "Jmeter Slave Build and Push was Successful"
     else
