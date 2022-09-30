@@ -6,19 +6,19 @@ ls -lrt
 
 echo "Build Jmeter Master Image"
 docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd .
-buildstatus=$?
+echo "buildstatus=$?"
 
 if [ $buildstatus -eq 0 ] 
 then
     echo "Push JMeter Master Image to ACR"
     docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd
-    pushstatus=$?
+    echo "pushstatus=$?"
     if [ $pushstatus -eq 0 ] 
     then
-        echo "Jmeter Master Image Push Successful"
+        echo "Jmeter Master Build and Push was Successful"
     else
-        echo "Jmeter Master Image Push Failed"
+        echo "Jmeter Master Build and Push was Failed"
     fi    
 else 
-    echo "Jmeter Master Image Build Failed"
+    echo "Jmeter Master Image Build was Failed"
 fi
