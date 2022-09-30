@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  JMeter_DistTestingSH:
+  JMeter_DistTesting_sh:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
@@ -12,7 +12,7 @@ pipelines:
       ACRpwd: AES:93Shl6wGNWELgvubz8A56g==:nJYINiT7QDipJ5IFwPs/wIOzfOwnxSzgq8XGjeJSeq7E7guzR0qCCJJ0Pq+hAUxi
     materials:
       git-e912034:
-        git: https://github.com/Rajasekar1990/gocd_DistTestCmp.git
+        git: https://github.com/Rajasekar1990/gocd_DistTestCmp_sh.git
         username: Rajasekar1990
         shallow_clone: false
         auto_update: true
