@@ -1,6 +1,6 @@
 # Use jmbase Docker base image
 #FROM rajasekars792/jmbaseimage:latest
-FROM jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd
+FROM jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocdsh
 
 MAINTAINER Rajasekar S <rajasekars792@gmail.com>
 

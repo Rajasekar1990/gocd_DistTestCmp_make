@@ -5,14 +5,14 @@ echo "listing files in current working dir"
 ls -lrt
 
 echo "Build Jmeter Master Image"
-docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd .
+docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocdsh .
 Masterbuildstatus=$?
 echo "Masterbuildstatus:$Masterbuildstatus"
 
 if [ $Masterbuildstatus -eq 0 ] 
 then
     echo "Push JMeter Master Image to ACR"
-    docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd
+    docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocdsh
     MasterPushstatus=$?
     echo "MasterPushstatus:$MasterPushstatus"
     if [ $MasterPushstatus -eq 0 ] 
