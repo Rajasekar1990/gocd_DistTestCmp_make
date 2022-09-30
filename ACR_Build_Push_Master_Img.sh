@@ -5,12 +5,14 @@ echo "listing files in current working dir"
 ls -lrt
 
 echo "Build Jmeter Master Image"
-Master_Build=$(docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd . | grep "naming to jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd done" | wc -l)
+Master_Build=$(docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd . | grep "writing image" | wc -l)
 
+echo "Master_BuildStatus:$Master_Build"
 if [ $Master_Build != 0 ] 
 then
     echo "Push JMeter Master Image to ACR"
-    MasterImg_Push=$(docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd | grep "jmeter5.3Azmastergocd" | wc -l)
+    MasterImg_Push=$(docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocd | grep "digest" | wc -l)
+    echo "MasterImg_PushStatus:$MasterImg_Push"
     if [ $MasterImg_Push != 0 ] 
     then
         echo "Jmeter Master Image Push Successful"

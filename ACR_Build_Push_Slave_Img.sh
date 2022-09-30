@@ -5,12 +5,14 @@ echo "listing files in current working dir"
 ls -lrt
 
 echo "Build Jmeter Slave Image"
-Slave_Build=$(docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd . | grep "naming to jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd done" | wc -l)
+Slave_Build=$(docker build -f jmeterslaveimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd . | grep "writing image" | wc -l)
+echo "Slave_BuildStatus:$Slave_Build"
 
 if [ $Slave_Build != 0 ] 
 then
     echo "Push JMeter Slave Image to ACR"
-    SlaveImg_Push=$(docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd | grep "jmeter5.3Azslavegocd" | wc -l)
+    SlaveImg_Push=$(docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azslavegocd | grep "digest" | wc -l)
+    echo "SlaveImg_PushStatus:$SlaveImg_Push"
     if [ $SlaveImg_Push != 0 ] 
     then
         echo "Jmeter Slave Image Push Successful"
