@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 currentworkdir=$(pwd)
-echo "current working dir is:${currentworkdir}"
+echo "## current working dir is:${currentworkdir} ##"
 
-echo "##Kill and Remove all Docker Compose Containers##"
+echo "## Kill and Remove all Docker Compose Containers ##"
 docker-compose -f ${currentworkdir}/jm/docker-compose.yml down
 
-echo "##Dockercompose containers status"
+echo "## Dockercompose containers status ##"
 Finalstatus_dockercmp=$(docker compose -f ${currentworkdir}/jm/docker-compose.yml ps -q --filter status=running | wc -l)
-echo "After Load Test docker compose status:$Finalstatus_dockercmp"
+echo "## After Load Test docker compose status:$Finalstatus_dockercmp ##"

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-echo "##Creating HTML Report##"
+echo "## Creating HTML Report ##"
 #docker exec -i jm_master /bin/bash -c "cd /home/jmeter/ && jmeter -g /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl -e -o /home/jmeter/htmlreport-${GO_PIPELINE_COUNTER}/"
 docker exec -i jm_master /bin/bash -c "cd /home/jmeter/ && jmeter -g /home/jmeter/jmeter-${GO_PIPELINE_COUNTER}.jtl -e -o /home/jmeter/htmlreport-${GO_PIPELINE_COUNTER}/"
 
-echo "##Copying JTL and HTML Report to GOCD working DIR##"
+echo "## Copying JTL and HTML Report to GOCD working DIR ##"
 # cd jm
 echo "Current Working DIR is:$PWD"
 echo "Current Working DIR file list:$(ls -lrt)"
