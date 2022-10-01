@@ -15,12 +15,14 @@ then
     docker push jmeteracrrepo.azurecr.io/jmeter:jmeter5.3Azmastergocdsh
     MasterPushstatus=$?
     echo "MasterPushstatus:$MasterPushstatus"
+    
     if [ $MasterPushstatus -eq 0 ] 
     then
         echo "Jmeter Master Build and Push was Successful"
     else
         echo "Jmeter Master Build and Push was Failed"
     fi    
+
 else 
     echo "Jmeter Master Image Build was Failed"
 fi

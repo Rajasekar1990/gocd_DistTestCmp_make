@@ -7,4 +7,4 @@ docker-compose -f ${currentworkdir}/jm/docker-compose.yml down
 
 echo "##Dockercompose containers status"
 Finalstatus_dockercmp=$(docker compose -f ${currentworkdir}/jm/docker-compose.yml ps -q --filter status=running | wc -l)
-echo "Before Load Test docker compose status:$Finalstatus_dockercmp"
+echo "After Load Test docker compose status:$Finalstatus_dockercmp"
