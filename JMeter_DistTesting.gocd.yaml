@@ -84,7 +84,6 @@ pipelines:
                 command: make
                 working_directory: JMeter_DistTesting_make
                 run_if: passed
-        jobs:
           JMeter_Slave_Push_Img:
             timeout: 0
             tasks:
