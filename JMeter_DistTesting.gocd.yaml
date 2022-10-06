@@ -12,7 +12,7 @@ pipelines:
       ACRpwd: AES:93Shl6wGNWELgvubz8A56g==:nJYINiT7QDipJ5IFwPs/wIOzfOwnxSzgq8XGjeJSeq7E7guzR0qCCJJ0Pq+hAUxi
     materials:
       git-e912034:
-        git: https://github.com/Rajasekar1990/gocd_DistTestCmp_sh.git
+        git: https://github.com/Rajasekar1990/gocd_DistTestCmp_make.git
         username: Rajasekar1990
         shallow_clone: false
         auto_update: true
