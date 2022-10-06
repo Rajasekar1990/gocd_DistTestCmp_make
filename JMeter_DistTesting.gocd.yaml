@@ -124,7 +124,7 @@ pipelines:
             timeout: 0
             artifacts:
             - build:
-                source: Report*
+                source: gocd_DistTestCmp_make/Report*
                 destination: ''
             tasks:
             - exec:
