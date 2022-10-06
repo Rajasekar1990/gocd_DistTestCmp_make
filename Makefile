@@ -11,7 +11,7 @@ ACR_Login:
 	@docker login jmeteracrrepo.azurecr.io -u $(ACRusername) -p $(ACRpwd)
 
 ACR_Build_Master_Img:
-	docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:${MasterImgTag}
+	docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:${MasterImgTag} .
 	
 ACR_Push_Master_Img:
 	docker push jmeteracrrepo.azurecr.io/jmeter:${MasterImgTag}
