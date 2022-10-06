@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  JMeter_DistTesting_make:
+  JMeter_DistTesting_sh:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
@@ -18,7 +18,6 @@ pipelines:
         auto_update: true
         branch: main
         encrypted_password: AES:6H8j1ldfMqlLY+zxGdNigQ==:SzWrCDRamRRv49Cv8D8GHA==
-        destination: JMeter_DistTesting_make
     stages:
     - ACR_Login:
         fetch_materials: true
@@ -38,8 +37,9 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
-                - ACR_Login
-                command: make
+                - -c
+                - sh ACR_Login.sh
+                command: /bin/bash
                 run_if: passed
     - ACR_JmMaster_Build_Push_Image:
         fetch_materials: true
@@ -49,24 +49,15 @@ pipelines:
           type: success
           allow_only_on_success: true
         jobs:
-          JMeter_Master_Build_Img:
+          JMeter_Master_Img:
             timeout: 0
             tasks:
             - exec:
                 arguments:
-                - ACR_Build_Master_Img
-                command: make
-                working_directory: JMeter_DistTesting_make
-                run_if: passed                
-          JMeter_Master_Push_Img:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - ACR_Push_Master_Img
-                command: make
-                working_directory: JMeter_DistTesting_make
-                run_if: passed        
+                - -c
+                - sh ACR_Build_Push_Master_Img.sh
+                command: /bin/bash
+                run_if: passed
     - ACR_JmSlave_Build_Push_Image:
         fetch_materials: true
         keep_artifacts: false
@@ -75,24 +66,14 @@ pipelines:
           type: success
           allow_only_on_success: true
         jobs:
-          JMeter_Slave_Build_Img:
+          JMeter_Slave_Img:
             timeout: 0
             tasks:
             - exec:
                 arguments:
-                - ACR_Build_Slave_Img
-                command: make
-                working_directory: JMeter_DistTesting_make
-                run_if: passed
-        jobs:
-          JMeter_Slave_Push_Img:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - ACR_Push_Slave_Img
-                command: make
-                working_directory: JMeter_DistTesting_make
+                - -c
+                - sh ACR_Build_Push_Slave_Img.sh
+                command: /bin/bash
                 run_if: passed
     - Execute_Performance_Test:
         fetch_materials: true
@@ -107,9 +88,9 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - Run_Load_Test
-                command: make
-                working_directory: JMeter_DistTesting_make
+                - -c
+                - sh runloadtest.sh
+                command: /bin/bash
                 run_if: passed
     - ReportCreation:
         fetch_materials: true
@@ -128,9 +109,9 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - Create_HTML_Report
-                command: make
-                working_directory: JMeter_DistTesting_make
+                - -c
+                - sh createHTMLReport.sh
+                command: /bin/bash
                 run_if: passed
     - CleanUpTestEnvironment:
         fetch_materials: true
@@ -145,7 +126,7 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - CleanUp_Workspace
-                command: make
-                working_directory: JMeter_DistTesting_make
+                - -c
+                - sh killremovedockercmp.sh
+                command: /bin/bash
                 run_if: passed
