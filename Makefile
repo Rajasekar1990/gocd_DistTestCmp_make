@@ -7,10 +7,10 @@ SlaveImgTag:jmeter5.3Azslavegocdsh
 #To use gocd pre defined and user defined variables in Makefile then enclose them with $()
 #To use Makefile variables in Makefile enclose them with ${}
 
-#@docker login jmeteracrrepo.azurecr.io -u $(ACRusername) -p $(ACRpwd)
+#@docker login jmeteracrrepo.azurecr.io -u jmeteracrrepo -p jrW6sM=SUnX9kYNW8pdzdQFct7bkJW3j
 
 ACR_Login:
-	@docker login jmeteracrrepo.azurecr.io -u jmeteracrrepo -p jrW6sM=SUnX9kYNW8pdzdQFct7bkJW3j
+	@docker login jmeteracrrepo.azurecr.io -u $(ACRusername) -p $(ACRpwd)
 
 ACR_Build_Master_Img: ACR_Login
 	docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:${MasterImgTag}}
