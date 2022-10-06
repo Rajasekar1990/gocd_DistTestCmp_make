@@ -1,8 +1,8 @@
 #WORK_DIR := $(shell pwd)
 
 # incase of changes made to the below tag names; check docker file and docker compose and update tag names on them
-MasterImgTag:jmeter5.3Azmastergocdsh
-SlaveImgTag:jmeter5.3Azslavegocdsh
+MasterImgTag=jmeter5.3Azmastergocdsh
+SlaveImgTag=jmeter5.3Azslavegocdsh
 
 #To use gocd pre defined and user defined variables in Makefile then enclose them with $()
 #To use Makefile variables in Makefile enclose them with ${}
