@@ -10,23 +10,23 @@ SlaveImgTag:jmeter5.3Azslavegocdsh
 ACR_Login:
 	@docker login jmeteracrrepo.azurecr.io -u $(ACRusername) -p $(ACRpwd)
 
-ACR_Build_Master_Img: ACR_Login
+ACR_Build_Master_Img:
 	docker build -f jmetermasterimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:${MasterImgTag}
 	
-ACR_Push_Master_Img: ACR_Login ACR_Build_Master_Img
+ACR_Push_Master_Img:
 	docker push jmeteracrrepo.azurecr.io/jmeter:${MasterImgTag}
 
-ACR_Build_Slave_Img: ACR_Login ACR_Build_Push_Master_Img
+ACR_Build_Slave_Img:
 	docker build -f jmeterslaveimage/Dockerfile -t jmeteracrrepo.azurecr.io/jmeter:${SlaveImgTag} .
 	
-ACR_Push_Slave_Img:	ACR_Login ACR_Build_Slave_Img
+ACR_Push_Slave_Img:
 	docker push jmeteracrrepo.azurecr.io/jmeter:${SlaveImgTag}
 
-Run_Load_Test: ACR_Push_Master_Img ACR_Push_Slave_Img
+Run_Load_Test:
 	chmod +x sh runloadtest.sh; \
 	sh runloadtest.sh
 
-Create_HTML_Report: Run_Load_Test
+Create_HTML_Report:
 	chmod +x sh createHTMLReport.sh; \
 	sh createHTMLReport.sh
 
