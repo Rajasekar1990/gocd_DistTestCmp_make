@@ -18,7 +18,7 @@ pipelines:
         auto_update: true
         branch: main
         encrypted_password: AES:6H8j1ldfMqlLY+zxGdNigQ==:SzWrCDRamRRv49Cv8D8GHA==
-        destination: gocd_DistTestCmp_make
+        #destination: gocd_DistTestCmp_make
     stages:
     - ACR_Login:
         fetch_materials: true
@@ -35,11 +35,13 @@ pipelines:
                 arguments:
                 - Login to ACR
                 command: echo
+                working_directory: gocd_DistTestCmp_make
                 run_if: passed
             - exec:
                 arguments:
                 - ACR_Login
                 command: make
+                working_directory: gocd_DistTestCmp_make
                 run_if: passed
     - ACR_JmMaster_Build_Push_Image:
         fetch_materials: true
