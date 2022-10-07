@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
 
-echo "## listing files in working dir ##"
-ls -lrt
+# echo "## listing files in working dir ##"
+# ls -lrt
 
-echo "## listing files in jm dir ##"
-ls -lrt jm
+# echo "## listing files in jm dir ##"
+# ls -lrt jm
 
-echo "## CurrentWorkingDir ##"
+# echo "## CurrentWorkingDir ##"
 currentworkdir=$(pwd)
 echo "## current working dir is:${currentworkdir} ##"
 
-echo "## Checking for docker-compose containers status ##"
-status_dockercmp=$(docker compose -f ${currentworkdir}/jm/docker-compose.yml ps -q --filter status=running | wc -l)
-echo "## Before Load Test docker compose status:$status_dockercmp ##"
+# echo "## Checking for docker-compose containers status ##"
+# status_dockercmp=$(docker compose -f ${currentworkdir}/jm/docker-compose.yml ps -q --filter status=running | wc -l)
+# echo "## Before Load Test docker compose status:$status_dockercmp ##"
 
-if [ $status_dockercmp > 0 ]
-then
-  docker-compose -f ${currentworkdir}/jm/docker-compose.yml down
-fi
+# if [ $status_dockercmp > 0 ]
+# then
+#   docker-compose -f ${currentworkdir}/jm/docker-compose.yml down
+# fi
 
 echo "## Creating a Master and a Slave container from ACR ##"
 docker-compose -f ${currentworkdir}/jm/docker-compose.yml up -d
